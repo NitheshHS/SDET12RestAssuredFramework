@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="3429" started-at="2021-05-11T16:41:17 IST" finished-at="2021-05-11T16:41:20 IST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="3429" started-at="2021-05-11T16:41:17 IST" finished-at="2021-05-11T16:41:20 IST">
+      <class name="com.rmgyantra.practice.DeleteProjectTest">
+        <test-method status="PASS" signature="deleteProjectTest()[pri:0, instance:com.rmgyantra.practice.DeleteProjectTest@1b68ddbd]" name="deleteProjectTest" duration-ms="3355" started-at="2021-05-11T16:41:17 IST" finished-at="2021-05-11T16:41:20 IST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- deleteProjectTest -->
+      </class> <!-- com.rmgyantra.practice.DeleteProjectTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

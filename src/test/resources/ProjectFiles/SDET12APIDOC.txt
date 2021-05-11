@@ -1,0 +1,96 @@
+===============Get Request===================
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.response.Response;
+
+public class GetAllProjectTest {
+	
+	@Test
+	public void getAllProjectTest() {
+		
+		Response response = RestAssured.get("http://localhost:8084/projects");
+		response.prettyPrint();//print only response body
+	
+	}
+
+}
+===================================
+Post Request using json Object
+Dependency: json-simple
+
+import org.json.simple.JSONObject;
+import org.testng.annotations.Test;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+
+public class CreateProjectTest {
+	
+	@Test
+	public void createProjectTest() {
+		JSONObject object=new JSONObject();
+		object.put("createdBy", "Nithesh");
+		object.put("createdOn", "11/05/2021");
+		object.put("projectId", "TY_011");
+		object.put("projectName", "SDET12API");
+		object.put("status", "OnGoing");
+		object.put("teamSize", 15);
+		
+		RequestSpecification req = RestAssured.given();
+		req.contentType(ContentType.JSON);
+		req.body(object);
+		
+		Response response = req.when().post("http://localhost:8084/addProject");
+		
+		response.prettyPrint();
+	}
+
+}
+=================Creating post request using hashmap==========================
+	@Test
+	public void createProjectTest() {
+		HashMap<String, Object> object=new HashMap<String, Object>();
+		object.put("createdBy", "NitheshHS");
+		object.put("createdOn", "11/05/2021");
+		object.put("projectId", "TY_02");
+		object.put("projectName", "RMG");
+		object.put("status", "Completed");
+		object.put("teamSize", 10);
+		
+		RequestSpecification requestSpecification = RestAssured.given();//precondition
+		requestSpecification.body(object);
+		requestSpecification.contentType(ContentType.JSON);
+		//sending request
+		Response response = requestSpecification.when().post("http://localhost:8084/addProject");
+		//printing the logs
+		response.then().log().all();//it print the header and body
+	}
+
+===========================Creating a  post request using json file================================
+Note:- when saving the file the extension should be .json
+@Test
+	public void createProjectTest() {
+		File file = new File(".\\src\\test\\resources\\ProjectFiles\\Project.json");
+		
+		RequestSpecification reqSpec = RestAssured.given();
+		reqSpec.contentType(ContentType.JSON);
+		reqSpec.body(file);
+		
+		Response res = reqSpec.when().post("http://localhost:8084/addProject");
+		
+		res.then().log().all();
+	}
+======================================================================================
+
+PATH parameter:- 
+@Test
+	public void getSingleProjectTest() {
+		//Path parameter
+		Response response = RestAssured.given()
+				.pathParam("projectId", "TY_PROJ_3005")
+				.get("http://localhost:8084/projects/{projectId}");
+		response.then().log().all();
+	}
