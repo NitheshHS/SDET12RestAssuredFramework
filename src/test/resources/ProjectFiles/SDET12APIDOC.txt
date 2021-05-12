@@ -84,6 +84,8 @@ Note:- when saving the file the extension should be .json
 		res.then().log().all();
 	}
 ======================================================================================
+How do give path parameter in rest assured:-
+pathParam("pathParameterName","pathParameterValue")
 
 PATH parameter:- 
 @Test
@@ -94,3 +96,57 @@ PATH parameter:-
 				.get("http://localhost:8084/projects/{projectId}");
 		response.then().log().all();
 	}
+
+============================================================
+Query parameter
+
+
+
+Pojo class:- Plain Old Java Object\
+
+Serialization and desiralization:-
+Serialization:- converting java object into byte stream
+desiralization:- Converting byte stream into java object
+
+what are all the different ways to create post request body or payload?
+JSONObject
+HashMap
+JsonFile
+POJOClass
+
+===========================
+steps to create pojoclass
+Location:- src/main/java/com.emg.pojo
+1.Declare all key variables as private
+2. generate one empty constructor
+3. generate one argumented constructor using variables
+4. provide getters and setters
+
+============================
+Oauth2.0
+client id : Sdet12
+client secret: b49636de231640d3466db59d964c88ef
+redirect uri: http://example.com
+
+
+================================
+Request chaining
+passing the response property from first request to another request we call it as request chaining/ api chaining
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
