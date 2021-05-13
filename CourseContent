@@ -1,0 +1,38 @@
+1.Crud opertions:
+GET
+POST
+PUT
+PATCH
+DELETE
+=======
+2. Coverting all request to BDD style
+given():- contentType, body, pathParameter,QueryParameter, formParameter, authentication, baseUri,port
+when():- get(),post(),put(),patch(),delete()
+then():-assertThat(), statusCode, ContentType, body,header,response time
+and()
+========================
+3.Different ways to create post request
+1.Json file:- file extension should be .json
+2.JSON object
+3.HashMap
+4.POJO class
+========================
+4.parameters:
+1.pathmeters:- to fetch perticular resource
+2.query parameter: sort/filter
+3. form param: confidential information
+=======================
+5.Authentication
+1.Basic Auth:- username and password
+2. Oauth2:- access token
+======================
+6.Request chaining:- using jsonpath()
+======================
+7.Validations:- using then()
+1.status code
+2. response time
+3. body
+4.contenttype
+5. header
+=====================
+8. framework
