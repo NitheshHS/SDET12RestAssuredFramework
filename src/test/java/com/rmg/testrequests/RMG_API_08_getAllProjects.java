@@ -4,7 +4,9 @@ import org.hamcrest.Matchers;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import com.rmg.base.BaseClass;
 import com.rmg.utility.DatabaseUtility;
+import com.rmg.utility.IEndPoints;
 
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -13,15 +15,8 @@ import static io.restassured.RestAssured.*;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-public class RMG_API_08_getAllProjects {
-	/*
-	 *  "projectId": "TY_PROJ_3206",
-        "projectName": "SDET12",
-        "teamSize": 15,
-        "createdBy": "NitheshHS",
-        "createdOn": "12/05/2021",
-        "status": "Ongoing"
-	 */
+public class RMG_API_08_getAllProjects extends BaseClass{
+	
 	@Test
 	public void getAllProjectTest() throws Throwable {
 		DatabaseUtility db = new DatabaseUtility();
@@ -29,7 +24,7 @@ public class RMG_API_08_getAllProjects {
 		Response response = given()
 			.contentType(ContentType.JSON)
 		.when()
-			.get("http://localhost:8084/projects");
+			.get(IEndPoints.GETALLPROJECT);
 		response.then()
 			.assertThat().statusCode(200)
 		.and()

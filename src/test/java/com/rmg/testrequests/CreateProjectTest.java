@@ -3,19 +3,20 @@ package com.rmg.testrequests;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import com.rmg.base.BaseClass;
 import com.rmg.pojo.ProjectPojo;
 import com.rmg.utility.DatabaseUtility;
+import com.rmg.utility.IEndPoints;
 
 import io.restassured.http.ContentType;
 import junit.framework.Assert;
 
 import static io.restassured.RestAssured.*;
-public class CreateProjectTest {
+public class CreateProjectTest extends BaseClass{
 
 	@Test
 	public void createProjectTest() throws Throwable {
-		DatabaseUtility db = new DatabaseUtility();
-		db.getConnection();
+		
 		
 		ProjectPojo project = new ProjectPojo("Nithesh", "12/05/2021", "TY_proj_01", "RMG_Yantra", "onGoing", 10);
 		
@@ -23,7 +24,7 @@ public class CreateProjectTest {
 			.contentType(ContentType.JSON)
 			.body(project)
 		.when()
-			.post("http://localhost:8084/addProject")
+			.post(IEndPoints.ADDPROJECT)
 		.then()
 			.assertThat().statusCode(201)
 		.and()
@@ -32,8 +33,8 @@ public class CreateProjectTest {
 			.assertThat().body("msg", Matchers.equalTo("Successfully Added"))
 		.log().all();
 		
-		String ActualData = db.exceuteQuery("Select * from project;", "status", project.getStatus());
+		String ActualData = databaseUtil.exceuteQuery("Select * from project;", "status", project.getStatus());
 		Assert.assertEquals(project.getStatus(), ActualData);
-		db.closeDBConnection();
+		
 	}
 }

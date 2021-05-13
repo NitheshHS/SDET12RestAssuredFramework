@@ -3,14 +3,16 @@ package com.rmg.testrequests;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import com.rmg.base.BaseClass;
 import com.rmg.pojo.ProjectPojo;
+import com.rmg.utility.IEndPoints;
 
 import io.restassured.http.ContentType;
 
 import static io.restassured.RestAssured.*;
 
 import java.util.concurrent.TimeUnit;
-public class RMG_API_06_addPRojectWithTextFromatBody {
+public class RMG_API_06_addPRojectWithTextFromatBody extends BaseClass{
 	
 	@Test
 	public void addprojectWithTextFormat() {
@@ -20,7 +22,7 @@ public class RMG_API_06_addPRojectWithTextFromatBody {
 			.contentType("application/text")
 			.body(project)
 		.when()
-			.post("http://localhost:8084/addProject")
+			.post(IEndPoints.ADDPROJECT)
 		.then()
 			.assertThat().statusCode(502)
 		.and()

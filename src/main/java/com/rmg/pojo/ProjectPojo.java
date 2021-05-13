@@ -1,12 +1,33 @@
 package com.rmg.pojo;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+import org.codehaus.jackson.annotate.JsonPropertyOrder;
+/**
+ * 
+ * @author Nitheesha
+ *
+ */
+@JsonPropertyOrder(value = {
+		"createdBy",
+		"createdOn",
+		"projectId",
+		"projectName",
+		"status",
+		"teamSize"
+})
 public class ProjectPojo {
 	
+	@JsonProperty(value = "createdBy")
 	private String createdBy;
+	@JsonProperty(value = "createdOn")
 	private String createdOn;
+	@JsonProperty(value = "projectId")
 	private String projectId;
+	@JsonProperty(value = "projectName")
 	private String projectName;
+	@JsonProperty(value = "status")
 	private String status;
+	@JsonProperty(value = "teamSize")
 	private int teamSize;
 	
 	public ProjectPojo() {}
